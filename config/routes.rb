@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resource :user, controller: :user, only: [] do
         collection do
+          get :me
           post :sign_in
         end
       end

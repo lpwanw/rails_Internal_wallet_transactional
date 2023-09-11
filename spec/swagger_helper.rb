@@ -42,6 +42,13 @@ RSpec.configure do |config|
         }
       ],
       components: {
+        securitySchemes: {
+          access_token: {
+            type: :apiKey,
+            name: "X-ACCESS-TOKEN",
+            in: :header
+          }
+        },
         schemas:
       }
     }
