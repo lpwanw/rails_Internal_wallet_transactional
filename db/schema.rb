@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_140735) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_143017) do
   create_table "tokens", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "access_token", null: false
@@ -21,6 +21,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_140735) do
     t.index ["access_token"], name: "index_tokens_on_access_token", unique: true
     t.index ["refresh_token"], name: "index_tokens_on_refresh_token", unique: true
     t.index ["user_id"], name: "index_tokens_on_user_id"
+  end
+
+  create_table "transactions", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "source_wallet_id"
+    t.bigint "target_wallet_id"
+    t.float "amount", null: false
+    t.string "transaction_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["source_wallet_id"], name: "index_transactions_on_source_wallet_id"
+    t.index ["target_wallet_id"], name: "index_transactions_on_target_wallet_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -40,4 +51,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_140735) do
   end
 
   add_foreign_key "tokens", "users"
+  add_foreign_key "transactions", "wallets", column: "source_wallet_id"
+  add_foreign_key "transactions", "wallets", column: "target_wallet_id"
 end
