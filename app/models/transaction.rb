@@ -3,6 +3,8 @@
 class Transaction < ApplicationRecord
   MODEL_SETTINGS = Settings.models.transaction
 
+  include Transaction::ValidateSourceWalletBalance
+
   enum transaction_type: {
     credit: "credit",
     debit: "debit"
