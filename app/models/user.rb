@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  has_one :wallet, as: :owner, dependent: :destroy
+
   # FYI: token has no destroy callback
   has_many :tokens, dependent: :delete_all
 
