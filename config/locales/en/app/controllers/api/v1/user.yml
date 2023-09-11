@@ -1,0 +1,7 @@
+en:
+  api:
+    v1:
+      user:
+        sign_in:
+          error:
+            unauthorized: "email or password wrong"
