@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Transaction do
+  it_behaves_like "include Transaction::ValidateSourceWalletBalance"
+
   describe "Enums" do
     it do
       is_expected.to define_enum_for(:transaction_type).with_values({ credit: "credit", debit: "debit" })
@@ -25,7 +27,7 @@ RSpec.describe Transaction do
   end
 
   describe "Validations" do
-    subject { build :transaction, transaction_type: }
+    subject { build :"#{transaction_type}_transaction" }
 
     let(:transaction_type) { "credit" }
 

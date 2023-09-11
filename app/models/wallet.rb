@@ -13,4 +13,10 @@ class Wallet < ApplicationRecord
                                 dependent: :delete_all
 
   validates :owner_id, uniqueness: { scope: [:owner_type] }
+
+  def balance
+    credits = credit_transactions.sum(:amount)
+    debits = debit_transactions.sum(:amount)
+    credits - debits
+  end
 end
