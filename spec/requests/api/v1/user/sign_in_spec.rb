@@ -35,11 +35,13 @@ RSpec.describe Api::V1::UserController do
 
         before { subject }
 
-        it { expect(response_body[:id]).to eq token.id }
-        it { expect(response_body[:user_id]).to eq token.user_id }
-        it { expect(response_body[:access_token]).to eq token.access_token }
-        it { expect(response_body[:refresh_token]).to eq token.refresh_token }
-        it { expect(response_body[:expires_at]).to eq token.expires_at.as_json }
+        it { expect(response_body[:success]).to be true }
+
+        it { expect(response_body[:data][:id]).to eq token.id }
+        it { expect(response_body[:data][:user_id]).to eq token.user_id }
+        it { expect(response_body[:data][:access_token]).to eq token.access_token }
+        it { expect(response_body[:data][:refresh_token]).to eq token.refresh_token }
+        it { expect(response_body[:data][:expires_at]).to eq token.expires_at.as_json }
 
         it { expect(response).to have_http_status(:created) }
       end

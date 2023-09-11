@@ -6,7 +6,7 @@ class Api::V1::UserController < Api::BaseController
   def sign_in
     token = @user.tokens.create
 
-    render json: token, status: :created
+    json_response TokenSerializer.new(token), status: :created
   end
 
   private
