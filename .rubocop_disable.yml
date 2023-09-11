@@ -1,0 +1,558 @@
+# Reference: https://github.com/rubocop/rubocop/blob/v1.51.0/config/default.yml
+# Only Disable Cops
+
+Bundler/GemComment:
+  Description: 'Add a comment describing each gem.'
+  Enabled: false
+  VersionAdded: '0.59'
+  VersionChanged: '0.85'
+  Include:
+    - '**/*.gemfile'
+    - '**/Gemfile'
+    - '**/gems.rb'
+  IgnoredGems: []
+  OnlyFor: []
+
+Bundler/GemVersion:
+  Description: 'Requires or forbids specifying gem versions.'
+  Enabled: false
+  VersionAdded: '1.14'
+  EnforcedStyle: 'required'
+  SupportedStyles:
+    - 'required'
+    - 'forbidden'
+  Include:
+    - '**/*.gemfile'
+    - '**/Gemfile'
+    - '**/gems.rb'
+  AllowedGems: []
+
+Gemspec/DependencyVersion:
+  Description: 'Requires or forbids specifying gem dependency versions.'
+  Enabled: false
+  VersionAdded: '1.29'
+  EnforcedStyle: 'required'
+  SupportedStyles:
+    - 'required'
+    - 'forbidden'
+  Include:
+    - '**/*.gemspec'
+  AllowedGems: []
+
+Layout/ClassStructure:
+  Description: 'Enforces a configured order of definitions within a class body.'
+  StyleGuide: '#consistent-classes'
+  Enabled: false
+  VersionAdded: '0.52'
+  Categories:
+    module_inclusion:
+      - include
+      - prepend
+      - extend
+  ExpectedOrder:
+    - module_inclusion
+    - constants
+    - public_class_methods
+    - initializer
+    - public_methods
+    - protected_methods
+    - private_methods
+
+Layout/EmptyLineAfterMultilineCondition:
+  Description: 'Enforces empty line after multiline condition.'
+  # This is disabled, because this style is not very common in practice.
+  Enabled: false
+  VersionAdded: '0.90'
+  Reference:
+    - https://github.com/airbnb/ruby#multiline-if-newline
+
+Layout/FirstArrayElementLineBreak:
+  Description: >-
+    Checks for a line break before the first element in a
+    multi-line array.
+  Enabled: false
+  VersionAdded: '0.49'
+  AllowMultilineFinalElement: false
+
+Layout/FirstHashElementLineBreak:
+  Description: >-
+    Checks for a line break before the first element in a
+    multi-line hash.
+  Enabled: false
+  VersionAdded: '0.49'
+  AllowMultilineFinalElement: false
+
+Layout/FirstMethodArgumentLineBreak:
+  Description: >-
+    Checks for a line break before the first argument in a
+    multi-line method call.
+  Enabled: false
+  VersionAdded: '0.49'
+  AllowMultilineFinalElement: false
+
+Layout/FirstMethodParameterLineBreak:
+  Description: >-
+    Checks for a line break before the first parameter in a
+    multi-line method parameter definition.
+  Enabled: false
+  VersionAdded: '0.49'
+  AllowMultilineFinalElement: false
+
+Layout/HeredocArgumentClosingParenthesis:
+  Description: >-
+    Checks for the placement of the closing parenthesis in a
+    method call that passes a HEREDOC string as an argument.
+  Enabled: false
+  StyleGuide: '#heredoc-argument-closing-parentheses'
+  VersionAdded: '0.68'
+
+Layout/MultilineArrayLineBreaks:
+  Description: >-
+    Checks that each item in a multi-line array literal
+    starts on a separate line.
+  Enabled: false
+  VersionAdded: '0.67'
+  AllowMultilineFinalElement: false
+
+Layout/MultilineAssignmentLayout:
+  Description: 'Check for a newline after the assignment operator in multi-line assignments.'
+  StyleGuide: '#indent-conditional-assignment'
+  Enabled: false
+  VersionAdded: '0.49'
+  # The types of assignments which are subject to this rule.
+  SupportedTypes:
+    - block
+    - case
+    - class
+    - if
+    - kwbegin
+    - module
+  EnforcedStyle: new_line
+  SupportedStyles:
+    # Ensures that the assignment operator and the rhs are on the same line for
+    # the set of supported types.
+    - same_line
+    # Ensures that the assignment operator and the rhs are on separate lines
+    # for the set of supported types.
+    - new_line
+
+Layout/MultilineHashKeyLineBreaks:
+  Description: >-
+    Checks that each item in a multi-line hash literal
+    starts on a separate line.
+  Enabled: false
+  VersionAdded: '0.67'
+  AllowMultilineFinalElement: false
+
+Layout/MultilineMethodArgumentLineBreaks:
+  Description: >-
+    Checks that each argument in a multi-line method call
+    starts on a separate line.
+  Enabled: false
+  VersionAdded: '0.67'
+  AllowMultilineFinalElement: false
+
+Layout/MultilineMethodParameterLineBreaks:
+  Description: >-
+    Checks that each parameter in a multi-line method definition
+    starts on a separate line.
+  Enabled: false
+  VersionAdded: '1.32'
+  AllowMultilineFinalElement: false
+
+Layout/RedundantLineBreak:
+  Description: >-
+    Do not break up an expression into multiple lines when it fits
+    on a single line.
+  Enabled: false
+  InspectBlocks: false
+  VersionAdded: '1.13'
+
+Layout/SingleLineBlockChain:
+  Description: 'Put method call on a separate line if chained to a single line block.'
+  Enabled: false
+  VersionAdded: '1.14'
+
+Lint/ConstantResolution:
+  Description: 'Check that constants are fully qualified with `::`.'
+  Enabled: false
+  VersionAdded: '0.86'
+  # Restrict this cop to only looking at certain names
+  Only: []
+  # Restrict this cop from only looking at certain names
+  Ignore: []
+
+Lint/HeredocMethodCallPosition:
+  Description: >-
+    Checks for the ordering of a method call where
+    the receiver of the call is a HEREDOC.
+  Enabled: false
+  StyleGuide: '#heredoc-method-calls'
+  VersionAdded: '0.68'
+
+Lint/NumberConversion:
+  Description: 'Checks unsafe usage of number conversion methods.'
+  Enabled: false
+  VersionAdded: '0.53'
+  VersionChanged: '1.1'
+  SafeAutoCorrect: false
+  AllowedMethods: []
+  AllowedPatterns: []
+  IgnoredClasses:
+    - Time
+    - DateTime
+
+Naming/InclusiveLanguage:
+  Description: 'Recommend the use of inclusive language instead of problematic terms.'
+  Enabled: false
+  VersionAdded: '1.18'
+  VersionChanged: '1.49'
+  CheckIdentifiers: true
+  CheckConstants: true
+  CheckVariables: true
+  CheckStrings: false
+  CheckSymbols: true
+  CheckComments: true
+  CheckFilepaths: true
+  FlaggedTerms:
+    whitelist:
+      Regex: !ruby/regexp '/white[-_\s]?list/'
+      Suggestions:
+        - allowlist
+        - permit
+    blacklist:
+      Regex: !ruby/regexp '/black[-_\s]?list/'
+      Suggestions:
+        - denylist
+        - block
+    slave:
+      WholeWord: true
+      Suggestions: ['replica', 'secondary', 'follower']
+
+Style/ArrayCoercion:
+  Description: >-
+    Use Array() instead of explicit Array check or [*var], when dealing
+    with a variable you want to treat as an Array, but you're not certain it's an array.
+  StyleGuide: '#array-coercion'
+  Safe: false
+  Enabled: false
+  VersionAdded: '0.88'
+
+Style/AsciiComments:
+  Description: 'Use only ascii symbols in comments.'
+  StyleGuide: '#english-comments'
+  Enabled: false
+  VersionAdded: '0.9'
+  VersionChanged: '1.21'
+  AllowedChars:
+    - ©
+
+Style/AutoResourceCleanup:
+  Description: 'Suggests the usage of an auto resource cleanup version of a method (if available).'
+  Enabled: false
+  VersionAdded: '0.30'
+
+Style/ClassMethodsDefinitions:
+  Description: 'Enforces using `def self.method_name` or `class << self` to define class methods.'
+  StyleGuide: '#def-self-class-methods'
+  Enabled: false
+  VersionAdded: '0.89'
+  EnforcedStyle: def_self
+  SupportedStyles:
+    - def_self
+    - self_class
+
+# Align with the style guide.
+Style/CollectionMethods:
+  Description: 'Preferred collection methods.'
+  StyleGuide: '#map-find-select-reduce-include-size'
+  Enabled: false
+  VersionAdded: '0.9'
+  VersionChanged: '1.7'
+  Safe: false
+  # Mapping from undesired method to desired method
+  # e.g. to use `detect` over `find`:
+  #
+  # Style/CollectionMethods:
+  #   PreferredMethods:
+  #     find: detect
+  PreferredMethods:
+    collect: 'map'
+    collect!: 'map!'
+    inject: 'reduce'
+    detect: 'find'
+    find_all: 'select'
+    member?: 'include?'
+  # Methods in this array accept a final symbol as an implicit block
+  # eg. `inject(:+)`
+  MethodsAcceptingSymbol:
+    - inject
+    - reduce
+
+Style/ConstantVisibility:
+  Description: >-
+    Check that class- and module constants have
+    visibility declarations.
+  Enabled: false
+  VersionAdded: '0.66'
+  VersionChanged: '1.10'
+  IgnoreModules: false
+
+Style/Copyright:
+  Description: 'Include a copyright notice in each file before any code.'
+  Enabled: false
+  VersionAdded: '0.30'
+  Notice: '^Copyright (\(c\) )?2[0-9]{3} .+'
+  AutocorrectNotice: ''
+
+Style/DateTime:
+  Description: 'Use Time over DateTime.'
+  StyleGuide: '#date-time'
+  Enabled: false
+  VersionAdded: '0.51'
+  VersionChanged: '0.92'
+  SafeAutoCorrect: false
+  AllowCoercion: false
+
+Style/DisableCopsWithinSourceCodeDirective:
+  Description: >-
+    Forbids disabling/enabling cops within source code.
+  Enabled: false
+  VersionAdded: '0.82'
+  VersionChanged: '1.9'
+  AllowedCops: []
+
+Style/DocumentationMethod:
+  Description: 'Checks for missing documentation comment for public methods.'
+  Enabled: false
+  VersionAdded: '0.43'
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+  RequireForNonPublicMethods: false
+
+Style/ImplicitRuntimeError:
+  Description: >-
+    Use `raise` or `fail` with an explicit exception class and
+    message, rather than just a message.
+  Enabled: false
+  VersionAdded: '0.41'
+
+Style/InlineComment:
+  Description: 'Avoid trailing inline comments.'
+  Enabled: false
+  VersionAdded: '0.23'
+
+Style/InvertibleUnlessCondition:
+  Description: 'Favor `if` with inverted condition over `unless`.'
+  Enabled: false
+  Safe: false
+  VersionAdded: '1.44'
+  VersionChanged: '1.50'
+  # `InverseMethods` are methods that can be inverted in a `unless` condition.
+  # The relationship of inverse methods needs to be defined in both directions.
+  # Keys and values both need to be defined as symbols.
+  InverseMethods:
+    :!=: :==
+    :>: :<=
+    :<=: :>
+    :<: :>=
+    :>=: :<
+    :!~: :=~
+    :zero?: :nonzero?
+    :nonzero?: :zero?
+    :any?: :none?
+    :none?: :any?
+    :even?: :odd?
+    :odd?: :even?
+    # `ActiveSupport` defines some common inverse methods. They are listed below,
+    # and not enabled by default.
+    # :present?: :blank?
+    # :blank?: :present?
+    # :include?: :exclude?
+    # :exclude?: :include?
+
+Style/IpAddresses:
+  Description: "Don't include literal IP addresses in code."
+  Enabled: false
+  VersionAdded: '0.58'
+  VersionChanged: '0.91'
+  # Allow addresses to be permitted
+  AllowedAddresses:
+    - "::"
+    # :: is a valid IPv6 address, but could potentially be legitimately in code
+  Exclude:
+    - '**/*.gemfile'
+    - '**/Gemfile'
+    - '**/gems.rb'
+    - '**/*.gemspec'
+
+Style/MethodCallWithArgsParentheses:
+  Description: 'Use parentheses for method calls with arguments.'
+  StyleGuide: '#method-invocation-parens'
+  Enabled: false
+  VersionAdded: '0.47'
+  VersionChanged: '1.7'
+  IgnoreMacros: true
+  AllowedMethods: []
+  AllowedPatterns: []
+  IncludedMacros: []
+  AllowParenthesesInMultilineCall: false
+  AllowParenthesesInChaining: false
+  AllowParenthesesInCamelCaseMethod: false
+  AllowParenthesesInStringInterpolation: false
+  EnforcedStyle: require_parentheses
+  SupportedStyles:
+    - require_parentheses
+    - omit_parentheses
+
+Style/MethodCalledOnDoEndBlock:
+  Description: 'Avoid chaining a method call on a do...end block.'
+  StyleGuide: '#single-line-blocks'
+  Enabled: false
+  VersionAdded: '0.14'
+
+Style/MissingElse:
+  Description: >-
+    Require if/case expressions to have an else branches.
+    If enabled, it is recommended that
+    Style/UnlessElse and Style/EmptyElse be enabled.
+    This will conflict with Style/EmptyElse if
+    Style/EmptyElse is configured to style "both".
+  Enabled: false
+  VersionAdded: '0.30'
+  VersionChanged: '0.38'
+  EnforcedStyle: both
+  SupportedStyles:
+    # if - warn when an if expression is missing an else branch
+    # case - warn when a case expression is missing an else branch
+    # both - warn when an if or case expression is missing an else branch
+    - if
+    - case
+    - both
+
+Style/MultilineMethodSignature:
+  Description: 'Avoid multi-line method signatures.'
+  Enabled: false
+  VersionAdded: '0.59'
+  VersionChanged: '1.7'
+
+Style/OptionHash:
+  Description: "Don't use option hashes when you can use keyword arguments."
+  Enabled: false
+  VersionAdded: '0.33'
+  VersionChanged: '0.34'
+  # A list of parameter names that will be flagged by this cop.
+  SuspiciousParamNames:
+    - options
+    - opts
+    - args
+    - params
+    - parameters
+  Allowlist: []
+
+Style/RequireOrder:
+  Description: Sort `require` and `require_relative` in alphabetical order.
+  Enabled: false
+  SafeAutoCorrect: false
+  VersionAdded: '1.40'
+
+Style/ReturnNil:
+  Description: 'Use return instead of return nil.'
+  Enabled: false
+  EnforcedStyle: return
+  SupportedStyles:
+    - return
+    - return_nil
+  VersionAdded: '0.50'
+
+Style/Send:
+  Description: 'Prefer `Object#__send__` or `Object#public_send` to `send`, as `send` may overlap with existing methods.'
+  StyleGuide: '#prefer-public-send'
+  Enabled: false
+  VersionAdded: '0.33'
+
+Style/SingleLineBlockParams:
+  Description: 'Enforces the names of some block params.'
+  Enabled: false
+  VersionAdded: '0.16'
+  VersionChanged: '1.6'
+  Methods:
+    - reduce:
+        - acc
+        - elem
+    - inject:
+        - acc
+        - elem
+
+Style/StaticClass:
+  Description: 'Prefer modules to classes with only class methods.'
+  StyleGuide: '#modules-vs-classes'
+  Enabled: false
+  Safe: false
+  VersionAdded: '1.3'
+
+Style/StringHashKeys:
+  Description: 'Prefer symbols instead of strings as hash keys.'
+  StyleGuide: '#symbols-as-keys'
+  Enabled: false
+  VersionAdded: '0.52'
+  VersionChanged: '0.75'
+  Safe: false
+
+Style/StringMethods:
+  Description: 'Checks if configured preferred methods are used over non-preferred.'
+  Enabled: false
+  VersionAdded: '0.34'
+  VersionChanged: '0.34'
+  # Mapping from undesired method to desired_method
+  # e.g. to use `to_sym` over `intern`:
+  #
+  # StringMethods:
+  #   PreferredMethods:
+  #     intern: to_sym
+  PreferredMethods:
+    intern: to_sym
+
+Style/TrailingCommaInBlockArgs:
+  Description: 'Checks for useless trailing commas in block arguments.'
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.81'
+
+Style/UnlessLogicalOperators:
+  Description: >-
+    Checks for use of logical operators in an unless condition.
+  Enabled: false
+  VersionAdded: '1.11'
+  EnforcedStyle: forbid_mixed_logical_operators
+  SupportedStyles:
+    - forbid_mixed_logical_operators
+    - forbid_logical_operators
+
+Style/YodaExpression:
+  Description: 'Forbid the use of yoda expressions.'
+  Enabled: false
+  Safe: false
+  VersionAdded: '1.42'
+  VersionChanged: '1.43'
+  SupportedOperators:
+    - '*'
+    - '+'
+    - '&'
+    - '|'
+    - '^'
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+  VersionAdded: '0.9'
+  AllowedConstants: []
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+    - 'app/models/application_record.rb'
+    - 'app/mailers/application_mailer.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'config/application.rb'
+    - 'db/**/*'

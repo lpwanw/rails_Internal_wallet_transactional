@@ -1,0 +1,44 @@
+# ref: https://github.com/rubocop/rubocop-rspec/blob/v2.22.0/config/default.yml
+# Disable RSpec cops only.
+
+RSpec/AlignLeftLetBrace:
+  Description: Checks that left braces for adjacent single line lets are aligned.
+  Enabled: false
+  VersionAdded: '1.16'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/AlignLeftLetBrace
+
+RSpec/AlignRightLetBrace:
+  Description: Checks that right braces for adjacent single line lets are aligned.
+  Enabled: false
+  VersionAdded: '1.16'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/AlignRightLetBrace
+
+RSpec/DescribedClassModuleWrapping:
+  Description: Avoid opening modules and defining specs within them.
+  Enabled: false
+  VersionAdded: '1.37'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/DescribedClassModuleWrapping
+
+RSpec/Dialect:
+  Description: Enforces custom RSpec dialects.
+  Enabled: false
+  PreferredMethods: {}
+  VersionAdded: '1.33'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Dialect
+
+RSpec/MessageExpectation:
+  Description: Checks for consistent message expectation style.
+  Enabled: false
+  EnforcedStyle: allow
+  SupportedStyles:
+    - allow
+    - expect
+  VersionAdded: '1.7'
+  VersionChanged: '1.8'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/MessageExpectation
+
+RSpec/Pending:
+  Description: Checks for any pending or skipped examples.
+  Enabled: false
+  VersionAdded: '1.25'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Pending

@@ -1,0 +1,45 @@
+# ref: https://github.com/rubocop/rubocop-performance/blob/v1.18.0/config/default.yml
+# Disable Performance cops only.
+
+Performance/ArraySemiInfiniteRangeSlice:
+  Description: 'Identifies places where slicing arrays with semi-infinite ranges can be replaced by `Array#take` and `Array#drop`.'
+  # This cop was created due to a mistake in microbenchmark.
+  # Refer https://github.com/rubocop/rubocop-performance/pull/175#issuecomment-731892717
+  Enabled: false
+  # Unsafe for string slices because strings do not have `#take` and `#drop` methods.
+  Safe: false
+  VersionAdded: '1.9'
+
+Performance/CaseWhenSplat:
+  Description: >-
+    Reordering `when` conditions with a splat to the end
+    of the `when` branches can improve performance.
+  Enabled: false
+  SafeAutoCorrect: false
+  VersionAdded: '0.34'
+  VersionChanged: '1.13'
+
+Performance/ChainArrayAllocation:
+  Description: >-
+    Instead of chaining array methods that allocate new arrays, mutate an
+    existing array.
+  Reference: 'https://twitter.com/schneems/status/1034123879978029057'
+  Enabled: false
+  VersionAdded: '0.59'
+
+Performance/IoReadlines:
+  Description: 'Use `IO.each_line` (`IO#each_line`) instead of `IO.readlines` (`IO#readlines`).'
+  Reference: 'https://docs.gitlab.com/ee/development/performance.html#reading-from-files-and-other-data-sources'
+  Enabled: false
+  VersionAdded: '1.7'
+
+Performance/OpenStruct:
+  Description: 'Use `Struct` instead of `OpenStruct`.'
+  Enabled: false
+  VersionAdded: '0.61'
+  Safe: false
+
+Performance/SelectMap:
+  Description: 'Use `filter_map` instead of `ary.select(&:foo).map(&:bar)`.'
+  Enabled: false
+  VersionAdded: '1.11'
