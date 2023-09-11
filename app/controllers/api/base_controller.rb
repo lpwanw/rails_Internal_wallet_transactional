@@ -3,4 +3,6 @@
 class Api::BaseController < ActionController::API
   include Api::JsonResponse
   include Api::RescueError
+
+  include Api::AuthenticateAccessToken
 end

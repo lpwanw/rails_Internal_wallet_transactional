@@ -10,6 +10,8 @@ class Token < ApplicationRecord
   has_secure_token :access_token
   has_secure_token :refresh_token
 
+  scope :not_expired, -> { where(expires_at: Time.zone.now...) }
+
   private
 
   def generate_expires_at
