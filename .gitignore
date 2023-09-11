@@ -36,3 +36,6 @@
 .idea
 .env
 coverage/*
+
+#api-doc
+swagger/v1/*

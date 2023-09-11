@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "success": { "type": "boolean", "default": false },
+    "error_message": { "type": "string", "default": "unauthorized" },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "full_message": {
+            "type": "string",
+            "example": "unauthorized"
+          }
+        }
+      }
+    }
+  }
+}
