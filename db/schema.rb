@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_042527) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_050907) do
+  create_table "tokens", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "access_token", null: false
+    t.string "refresh_token", null: false
+    t.datetime "expires_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["access_token"], name: "index_tokens_on_access_token", unique: true
+    t.index ["refresh_token"], name: "index_tokens_on_refresh_token", unique: true
+    t.index ["user_id"], name: "index_tokens_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest", null: false
@@ -19,4 +31,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_042527) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "tokens", "users"
 end

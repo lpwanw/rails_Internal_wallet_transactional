@@ -5,6 +5,9 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  # FYI: token has no destroy callback
+  has_many :tokens, dependent: :delete_all
+
   before_save :downcase_email
 
   validates :email, presence: true
