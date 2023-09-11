@@ -1,4 +1,6 @@
 models:
+  token:
+    ttl: 28800 # 8 hours
   user:
     email:
       length:

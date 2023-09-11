@@ -7,6 +7,10 @@ RSpec.describe User do
     it { is_expected.to have_secure_password }
   end
 
+  describe "Associations" do
+    it { is_expected.to have_many(:tokens).dependent(:delete_all) }
+  end
+
   describe "Callbacks" do
     describe "#downcase_email" do
       subject { user.save }
