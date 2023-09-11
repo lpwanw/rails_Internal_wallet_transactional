@@ -5,6 +5,20 @@ require "rails_helper"
 RSpec.describe Wallet do
   describe "Associations" do
     it { is_expected.to belong_to(:owner) }
+
+    it do
+      is_expected.to have_many(:credit_transactions).class_name("Transaction")
+                                                    .with_foreign_key("target_wallet_id")
+                                                    .inverse_of(:target_wallet)
+                                                    .dependent(:delete_all)
+    end
+
+    it do
+      is_expected.to have_many(:debit_transactions).class_name("Transaction")
+                                                   .with_foreign_key("source_wallet_id")
+                                                   .inverse_of(:source_wallet)
+                                                   .dependent(:delete_all)
+    end
   end
 
   describe "Validations" do
