@@ -1,0 +1,8 @@
+models:
+  user:
+    email:
+      length:
+        max: 255
+    password:
+      length:
+        in: !ruby/range 6..128

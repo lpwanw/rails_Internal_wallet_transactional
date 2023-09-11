@@ -614,7 +614,7 @@ RSpec/MultipleSubjects:
 RSpec/NamedSubject:
   Description: Checks for explicitly referenced test subjects.
   Enabled: true
-  EnforcedStyle: always
+  EnforcedStyle: named_only
   SupportedStyles:
     - always
     - named_only
@@ -627,7 +627,7 @@ RSpec/NamedSubject:
 RSpec/NestedGroups:
   Description: Checks for nested example groups.
   Enabled: true
-  Max: 3
+  Max: 5
   AllowedGroups: []
   VersionAdded: '1.7'
   VersionChanged: '2.13'
