@@ -8,6 +8,7 @@ RSpec.describe User do
   end
 
   describe "Associations" do
+    it { is_expected.to have_one(:wallet).dependent(:destroy) }
     it { is_expected.to have_many(:tokens).dependent(:delete_all) }
   end
 
