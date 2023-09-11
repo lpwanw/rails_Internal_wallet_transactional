@@ -51,14 +51,18 @@ RSpec.describe Api::V1::UserController do
       context "when email not found" do
         let(:email) { "invalid_email" }
 
-        it { expect(response_body).to be_blank }
+        it { expect(response_body[:success]).to be false }
+        it { expect(response_body[:error_message]).to eq "email or password wrong" }
+        it { expect(response_body[:errors]).to eq [{ "full_message" => "unauthorized" }] }
         it { expect(response).to have_http_status(:unauthorized) }
       end
 
       context "when wrong password" do
         let(:password) { "invalid_password" }
 
-        it { expect(response_body).to be_blank }
+        it { expect(response_body[:success]).to be false }
+        it { expect(response_body[:error_message]).to eq "email or password wrong" }
+        it { expect(response_body[:errors]).to eq [{ "full_message" => "unauthorized" }] }
         it { expect(response).to have_http_status(:unauthorized) }
       end
     end

@@ -1,0 +1,5 @@
+en:
+  api:
+    error:
+      base_error: "error happened"
+      unauthorized_error: "unauthorized"

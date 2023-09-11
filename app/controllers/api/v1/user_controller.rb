@@ -15,6 +15,6 @@ class Api::V1::UserController < Api::BaseController
     @user = User.find_by(email: params[:email])
     return if @user&.authenticate(params[:password])
 
-    render json: {}, status: :unauthorized
+    raise Api::Error::UnauthorizedError, I18n.t("api.v1.user.sign_in.error.unauthorized")
   end
 end
