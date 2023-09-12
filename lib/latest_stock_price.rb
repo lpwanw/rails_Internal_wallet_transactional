@@ -3,9 +3,9 @@
 module LatestStockPrice
   class << self
     attr_accessor :api_key
-  end
 
-  def self.configure
-    yield(self)
+    def configure
+      yield(self)
+    end
   end
 end

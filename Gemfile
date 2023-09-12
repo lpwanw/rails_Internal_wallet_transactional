@@ -10,6 +10,7 @@ gem "bcrypt"
 gem "bootsnap", require: false
 gem "config"
 gem "dotenv-rails"
+gem "faraday"
 gem "importmap-rails"
 gem "jbuilder"
 gem "mysql2", "~> 0.5"
