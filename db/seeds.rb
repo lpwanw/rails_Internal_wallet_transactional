@@ -19,5 +19,5 @@ end
 # init User balance
 users.each do |user|
   new_balance = rand(20..1000) # random from 0 to 1000 $
-  user.wallet.credit_transactions.create(transaction_type: :credit, amount: new_balance)
+  user.wallet.credit_transactions.create(amount: new_balance)
 end
