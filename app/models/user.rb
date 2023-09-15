@@ -21,6 +21,8 @@ class User < ApplicationRecord
 
   validates :password_confirmation, presence: true, if: :password_digest_changed?
 
+  delegate :balance, to: :wallet, allow_nil: true
+
   private
 
   def downcase_email
