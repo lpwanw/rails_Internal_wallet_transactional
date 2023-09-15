@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Transaction do
+RSpec.describe Transaction do # rubocop:disable CustomCops/NoDirectTransactionUsage
   describe "Enums" do
     it do
       is_expected.to define_enum_for(:transaction_type).with_values({ credit: "credit", debit: "debit" })

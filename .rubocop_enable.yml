@@ -2906,6 +2906,7 @@ Style/ClassAndModuleChildren:
   Exclude:
     - 'config/application.rb'
     - 'lib/generators/latest_stock_price/**/*'
+    - 'lib/custom_cops/**/*'
 
 Style/ClassCheck:
   Description: 'Enforces consistent use of `Object#is_a?` or `Object#kind_of?`.'
