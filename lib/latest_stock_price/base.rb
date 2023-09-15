@@ -25,7 +25,7 @@ class LatestStockPrice::Base
       return handle_success if @response.success?
 
       # TODO: implement lib/latest_stock_price/error.rb
-      raise StandardError
+      raise @response.body
     end
 
     def handle_success
