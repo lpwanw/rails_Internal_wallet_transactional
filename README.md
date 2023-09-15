@@ -68,6 +68,32 @@ rubocop --only CustomCops/NoDirectTransactionUsage
 
 <img alt="img.png" src="sign_in_api.png" width="700"/>
 
+### V. LatestStockPrice as a Gem
+
+#### a. Generators
+Run below question to create config/initializers/latest_stock_price.rb
+```sh
+rails generate latest_stock_price:install
+```
+
+#### b. API keys
+ - got to https://rapidapi.com/suneetk92/api/latest-stock-price.
+ - get API key and saved as ENV["RAPID_API_KEY"] (or custom at `config/initializers/latest_stock_price.rb`)
+
+#### c. Usage
+
+##### API get Price
+
+```sh
+LatestStockPrice::Price.get_price(indices: "NIFTY 50", identifier: "HEROMOTOCOEQN")
+```
+
+##### API get PriceAll
+
+```sh
+LatestStockPrice::PriceAll.get_price_all(identifier: "HEROMOTOCOEQN")
+```
+
 ## 4. Requirement
 
 ### I. polymorphic
