@@ -1,4 +1,23 @@
 # GUIDE
+[![CI](https://github.com/lpwanw/rails_Internal_wallet_transactional/actions/workflows/ci.yml/badge.svg)](https://github.com/lpwanw/rails_Internal_wallet_transactional/actions/workflows/ci.yml)
+
+## 0. table of content
+
+- [1. Development tools](#1-development-tools)
+- [2. Getting started](#2-getting-started)
+- [3. Tasks](#3-tasks)
+    - [I. Model diagram & database design](#i-model-diagram--database-design)
+    - [II. Full Validate & Rspec](#ii-full-validate--rspec)
+    - [III. Apply STI](#iii-apply-sti)
+    - [IV. Sign API](#iv-sign-api)
+- [4. Requirement](#4-requirement)
+  - [I. Polymorphic](#i-polymorphic)
+  - [II. Record in database](#ii-record-in-database)
+  - [III. Validate for each transaction](#iii-validate-for-each-transaction)
+  - [IV. Apply ACID](#iv-apply-acid)
+  - [V. Check Wallet balance](#v-check-wallet-balance)
+  - [VI. Create Transaction](#vi-create-transaction)
+  - [VII. Debit with amount larger than balance](#vii-debit-with-amount-larger-than-balance)
 
 ## 1. Development tools
 
@@ -49,20 +68,46 @@ rubocop --only CustomCops/NoDirectTransactionUsage
 
 <img alt="img.png" src="sign_in_api.png" width="700"/>
 
+### V. LatestStockPrice as a Gem
+
+#### a. Generators
+Run below question to create config/initializers/latest_stock_price.rb
+```sh
+rails generate latest_stock_price:install
+```
+
+#### b. API keys
+ - got to https://rapidapi.com/suneetk92/api/latest-stock-price.
+ - get API key and saved as ENV["RAPID_API_KEY"] (or custom at `config/initializers/latest_stock_price.rb`)
+
+#### c. Usage
+
+##### API get Price
+
+```sh
+LatestStockPrice::Price.get_price(indices: "NIFTY 50", identifier: "HEROMOTOCOEQN")
+```
+
+##### API get PriceAll
+
+```sh
+LatestStockPrice::PriceAll.get_price_all(identifier: "HEROMOTOCOEQN")
+```
+
 ## 4. Requirement
 
-### a. polymorphic
+### I. polymorphic
     User, Team, Stock have their own wallet.
 
-### b. record in database
+### II. record in database
     use Model Transaction to track all request
-### c. Validate for each transaction
-### d. apply ACID
+### III. Validate for each transaction
+### IV. apply ACID
 - A: check if balance of wallet is available to create debit transaction
 - C: Validate in each transaction, each owner record
 - I: use with_lock to ensure. multiple transaction process in the same time will not brake the wallet balance
 - D: when the transaction is committed, it remain so
-### e. Check Wallet balance
+### V. Check Wallet balance
 ```ruby
 # balance calculated by summing Transaction records
 user.balance
@@ -75,7 +120,7 @@ def balance
 end
 ```
 
-### f. Create Transaction
+### VI. Create Transaction
 ```ruby
 user = User.find(user_id)    
 # create credit transaction
@@ -83,7 +128,7 @@ user.wallet.credit_transactions.create(amount: amount)
 # create debit transaction
 user.wallet.debit_transactions.create(amount: amount)
 ```
-### g. Debit with amount larger than balance
+### VII. Debit with amount larger than balance
 ```ruby
 user = User.find 2
 #User Load (0.8ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
