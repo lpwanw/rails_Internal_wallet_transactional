@@ -25,14 +25,29 @@ rails db:migrate
 ```shell
 RAILS_ENV=test rails rswag
 ```
+/api-docs
+### c. Start Server
+```shell
+rails s -p 3000
+```
 
 ## 3. Tasks
-### c. Apply STI
+### I.Model diagram & database design
+<img  src="rail_internal_wallet_transactional_development.png" width="700" alt="db"/>
+<img src="Team.png" width="700" alt="model"/>
+
+### II. Full Validate & Rspec
+<img alt="img.png" src="coverage.png" width="700"/>
+
+### III. Apply STI
 - use 2 class `DebitTransaction` & `CreditTransaction` instead of `Transaction`
 - Custom rubocop to check usage of `Transaction`
 ```sh
 rubocop --only CustomCops/NoDirectTransactionUsage
 ```
+### IV. Sign API
+
+<img alt="img.png" src="sign_in_api.png" width="700"/>
 
 ## 4. Requirement
 
@@ -49,15 +64,15 @@ rubocop --only CustomCops/NoDirectTransactionUsage
 - D: when the transaction is committed, it remain so
 ### e. Check Wallet balance
 ```ruby
-    # balance calculated by summing Transaction records
-    user.balance
+# balance calculated by summing Transaction records
+user.balance
 
-    # implementation
-    def balance
-      credits = credit_transactions.sum(:amount)
-      debits = debit_transactions.sum(:amount)
-      credits - debits
-    end
+# implementation
+def balance
+  credits = credit_transactions.sum(:amount)
+  debits = debit_transactions.sum(:amount)
+  credits - debits
+end
 ```
 
 ### f. Create Transaction
