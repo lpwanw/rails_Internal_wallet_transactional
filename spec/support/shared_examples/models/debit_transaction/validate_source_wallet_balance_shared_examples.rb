@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples "include Transaction::ValidateSourceWalletBalance" do
-  describe "Transaction::ValidateSourceWalletBalance" do
+RSpec.shared_examples "include DebitTransaction::ValidateSourceWalletBalance" do
+  describe "DebitTransaction::ValidateSourceWalletBalance" do
     describe "Callbacks" do
       context "when prevent negative balance" do
         subject { transaction.save }

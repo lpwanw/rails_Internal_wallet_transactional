@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
+# DO NOT USE THIS CLASS DIRECTLY. Use its subclasses like CreditTransaction or DebitTransaction.
 class Transaction < ApplicationRecord
   MODEL_SETTINGS = Settings.models.transaction
-
-  include Transaction::ValidateSourceWalletBalance
 
   enum transaction_type: {
     credit: "credit",

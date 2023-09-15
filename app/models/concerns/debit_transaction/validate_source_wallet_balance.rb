@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module Transaction::ValidateSourceWalletBalance
+module DebitTransaction::ValidateSourceWalletBalance
   extend ActiveSupport::Concern
 
   included do
-    before_validation :validate_source_wallet_balance, if: :debit?
+    before_validation :validate_source_wallet_balance
   end
 
   private

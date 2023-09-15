@@ -6,20 +6,19 @@ FactoryBot.define do
     target_wallet { nil }
     amount { rand 1..200 }
     transaction_type { Transaction.transaction_types.keys.sample }
+  end
 
-    trait :credit_transaction do
-      transaction_type { "credit" }
-      target_wallet factory: %i[wallet]
-      source_wallet { nil }
-    end
+  factory :credit_transaction, class: "CreditTransaction" do
+    amount { rand 1..200 }
+    transaction_type { "credit" }
+    target_wallet factory: %i[wallet]
+    source_wallet { nil }
+  end
 
-    trait :debit_transaction do
-      transaction_type { "debit" }
-      source_wallet factory: %i[wallet]
-      target_wallet { nil }
-    end
-
-    factory :credit_transaction, traits: %i[credit_transaction]
-    factory :debit_transaction, traits: %i[debit_transaction]
+  factory :debit_transaction, class: "DebitTransaction" do
+    amount { rand 1..200 }
+    transaction_type { "debit" }
+    source_wallet factory: %i[wallet]
+    target_wallet { nil }
   end
 end
