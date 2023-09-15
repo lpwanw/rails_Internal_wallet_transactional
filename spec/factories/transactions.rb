@@ -5,7 +5,7 @@ FactoryBot.define do
     source_wallet { nil }
     target_wallet { nil }
     amount { rand 1..200 }
-    transaction_type { Transaction.transaction_types.keys.sample }
+    transaction_type { Transaction.transaction_types.keys.sample } # rubocop:disable CustomCops/NoDirectTransactionUsage
   end
 
   factory :credit_transaction, class: "CreditTransaction" do

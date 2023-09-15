@@ -14,14 +14,14 @@ RSpec.shared_examples "include DebitTransaction::ValidateSourceWalletBalance" do
         context "when amount debit is greater than wallet balance" do
           let(:amount) { 101 }
 
-          it { expect { subject }.not_to change(Transaction, :count) }
+          it { expect { subject }.not_to change(DebitTransaction, :count) }
           it { expect { subject }.not_to(change(wallet, :balance)) }
         end
 
         context "when amount debit is small than or equal to wallet balance" do
           let(:amount) { 100 }
 
-          it { expect { subject }.to change(Transaction, :count).by(1) }
+          it { expect { subject }.to change(DebitTransaction, :count).by(1) }
           it { expect { subject }.to(change(wallet, :balance).by(-100)) }
         end
       end

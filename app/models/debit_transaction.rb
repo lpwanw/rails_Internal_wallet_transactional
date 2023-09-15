@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DebitTransaction < Transaction
+class DebitTransaction < Transaction # rubocop:disable CustomCops/NoDirectTransactionUsage
   include DebitTransaction::ValidateSourceWalletBalance
 
   before_validation -> { assign_attributes(transaction_type: :debit) }

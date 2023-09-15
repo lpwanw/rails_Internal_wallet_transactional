@@ -19,6 +19,7 @@ require:
   - rubocop-rails
   - rubocop-rake
   - rubocop-rspec
+  - ./lib/custom_cops/no_direct_transaction_usage.rb
 
 AllCops:
   RubyInterpreters:

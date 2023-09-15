@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # DO NOT USE THIS CLASS DIRECTLY. Use its subclasses like CreditTransaction or DebitTransaction.
-class Transaction < ApplicationRecord
+class Transaction < ApplicationRecord # rubocop:disable CustomCops/NoDirectTransactionUsage
   MODEL_SETTINGS = Settings.models.transaction
 
   enum transaction_type: {
